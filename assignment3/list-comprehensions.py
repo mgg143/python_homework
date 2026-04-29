@@ -15,7 +15,7 @@ with open("../csv/employees.csv", "r") as f:
     reader = csv.reader(f)
     employees = list(reader)
 
-employee_names = [f"{employee[0]} {employee[1]}" for employee in employees[1:]]
+employee_names = [f"{employee[1]} {employee[2]}" for employee in employees[1:]]
 
 print(employee_names)
 
