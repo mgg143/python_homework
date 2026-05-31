@@ -1,0 +1,61 @@
+==============================================================================
+FILE: ethical_scraping.txt
+SUBJECT: Ethical Web Scraping Analysis - Wikipedia Policy Evaluation
+==============================================================================
+
+>> 1. WHICH SECTIONS OF THE WEBSITE ARE RESTRICTED FOR CRAWLING?
+Many sections are restricted, but the major categories include:
+
+The entire site is blocked for many specific bots (e.g., MJ12bot, Mediapartners-Google*, UbiCrawler, HTTrack, WebReaper, 
+wget, etc.).
+
+One example from the document:
+“User-agent: MJ12bot
+Disallow: /”
+
+For all user agents (User-agent: *), the following major areas are disallowed:
+  /w/
+  /api/
+  /trap/
+  All /wiki/Special: pages (and equivalents in multiple languages)
+
+  Numerous Wikipedia administrative, deletion, arbitration, copyright, and user‑related pages across many language editions
+  Example:
+  “Disallow: /wiki/Wikipedia:Articles_for_deletion/”
+
+These restrictions cover sensitive areas such as deletion discussions, admin tools, user pages, copyright investigations, 
+and other non‑article spaces.
+
+>> 2. ARE THERE SPECIFIC RULES FOR CERTAIN USER AGENTS?
+Yes. The robots.txt contains many user-agent-specific rules:
+
+2a. Complete blocking (Disallow: /) for dozens of bots considered harmful or too aggressive
+-> Example:
+User-agent: WebStripper
+Disallow: /
+
+2b. Special crawl-delay rule for SemrushBot
+-> User-agent: SemrushBot
+Crawl-delay: 5
+
+2c. Work bots that are allowed (no disallow rule)
+-> Example:
+User-agent: IsraBot
+Disallow:
+
+2d. Wildcard matching for advertising bots
+-> Example:
+User-agent: Mediapartners-Google*
+Disallow: /
+
+2e. General rules for all other bots under "User-agent: *"
+-> Some API endpoints allowed
+-> Many administrative pages disallowed
+
+
+>> 3. REFLECTION ON THE PURPOSE AND IMPORTANCE OF ROBOTS.TXT
+Websites use robots.txt to manage automated crawler traffic, protect server resources, and prevent aggressive
+bots from overwhelming bandwidth or core infrastructure. By clearly defining which areas may be accessed or indexed,
+the file shields sensitive or non‑public pages while ensuring real users experience consistent site performance. 
+Ethical scrapers follow these rules to respect site boundaries, avoid legal or operational issues, and help maintain
+ a trustworthy, stable internet ecosystem.
