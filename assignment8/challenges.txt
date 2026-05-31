@@ -1,0 +1,20 @@
+==============================================================================
+FILE: challenges.txt
+SUBJECT: Engineering Challenges & Technical Resolution Log
+==============================================================================
+
+1. CHALLENGE: Structural Layout Variety across Websites
+- Symptom: Web elements on pages like the OWASP registry often lack explicit, 
+  unique ID attributes, making standard class selection brittle and prone to failure.
+- Resolution: We initially implemented structural XPath navigation strings using parent/child 
+  axes ("//main//ol/li/a"). This isolates elements based on their position in 
+  the document tree, making the scraper much more stable even if individual 
+  CSS class names change.
+
+2. CHALLENGE: 
+- Symptom: These XPath structural paths proved fragile, breaking completely and returning empty payloads when minor DOM 
+  layout adjustments occurred. We also wanted to create a system that was likely to remain functional after any site
+  changes.
+- Resolution: We replaced the fragile XPaths and proposed defensive loop-filtering logic with a resilient, semantic 
+  CSS selector (article ol li a). This eliminated the need for fallback code, minimized the script's footprint, 
+  and insulated the automation from surface-level website layout updates.
