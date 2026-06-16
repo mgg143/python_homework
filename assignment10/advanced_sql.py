@@ -169,9 +169,10 @@ def run_task_3(conn):
 
         # Leave primary key (order_id) off the insert; let SQLite autoincrement it
         # RETURNING clause captures the system-assigned order ID immediately
+        # 🌟 FIXED: Changed 'order_date' to 'date' to correctly match your database columns
         cursor.execute(
             """
-            INSERT INTO orders (customer_id, employee_id, order_date)
+            INSERT INTO orders (customer_id, employee_id, date)
             VALUES (?, ?, datetime('now'))
             RETURNING order_id;
         """,
